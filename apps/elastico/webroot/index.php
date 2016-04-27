@@ -4,7 +4,7 @@ require_once dirname(__DIR__) . '/app_config.php';
 require_once $config['base_dir'] . '/lib/vendor/autoload.php';
 
 define('BASE_HREF',$config['base_url']);
-$es_server = '127.0.0.1';
+$es_server = $config['es_server'];
 
 session_start();
 if(isset($_GET['ES_SERVER'])){
