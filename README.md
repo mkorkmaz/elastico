@@ -9,7 +9,7 @@ Just another Elasticsearch Document Viewer.
 ### Installation
 
 ```
-git clone git@github.com:mkorkmaz/elastico.git
+git clone https://github.com/mkorkmaz/elastico.git
 cd elastico/lib
 composer install
 cd ../apps/elastico
