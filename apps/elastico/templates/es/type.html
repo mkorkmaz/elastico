@@ -1,0 +1,121 @@
+<style>
+    .doc_data{ margin-right:5px;}
+    .doc_key{ margin-right:1px; line-height:24px; padding:3px; color:#990000; font-weight:600;}
+    .doc_value{}
+    .string { color: #006600; }
+    .number { color: #FF8C00; }
+    .boolean { color: #000066; }
+    .null { color: magenta; }
+    .key { color: #990000; }
+</style>
+<section class="content-header">
+    <h5>
+        <a href="{{runtime_config.base_url}}"><strong>  Home</strong></a> / <strong>{{index}}</strong> / {{type}}
+    </h5>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-12" >
+            {% if documents|length > 0 %}
+            <div class="box ">
+                <div class="box-body">
+                    <table class="table">
+                        <thead>
+                            <th>#</th>
+                            <th></th>
+                            <th>Document</th>
+                        </thead>
+                        <tbody>
+                        {% for doc in documents %}
+                            {% set doc_order = loop.index %}
+                            <tr>
+                                <td>{{doc_order+from}}</td>
+                                <td> <a href="{{runtime_config.screen_href}}/delete/{{index}}/{{type}}/{{doc._id}}" onclick="return confirm('Are you sure to delete this document?')"><i class="fa fa-times"></i></a></td>
+                                <td  onclick="$('#json_data_{{doc_order}}').slideToggle('slow')" style="cursor: default;">
+                                    {% for key,value in doc%}
+                                        {%if key!='type'%}
+                                            {% if value is iterable %}
+                                                <span class="doc_data"><span class="doc_key">{{key}}:</span> <span class="doc_value">{{value|json_encode(JSON_PRETTY_PRINT)}}</span></span>
+                                            {%else%}
+                                                <span class="doc_data"><span class="doc_key">{{key}}:</span> <span class="doc_value">{{value}}</span></span>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr style="display:none;" id="json_data_{{doc_order}}">
+                                <td colspan="3">
+                                    <pre class="json_pretty_print">
+                                        {{doc|json_encode(JSON_PRETTY_PRINT)}}
+                                    </pre>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {%endif%}
+            <div class="panel-footer">
+                <strong>{{ nof }}</strong> docs found.
+            </div>
+
+        {% set nof_pages = (nof/size)|round(0,'ceil') %}
+        {% set renderedEllipses = 0 %}
+        {%if nof_pages < 1%}
+            {% set nof_pages = 1 %}
+        {%endif %}
+        {% if nof_pages > 1%}
+            {% set curr_page = from/size+1 %}
+            <div style="text-align:center">
+                <ul class="pagination">
+                    {% for i in 1..nof_pages %}
+                        {% if i < 4 %}
+                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}">{{ i }}</a></li>
+                        {% elseif i>=(curr_page-1) and i<=(curr_page+1) %}
+                            {% set renderedEllipses = 0 %}
+                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}">{{ i }}</a></li>
+                        {% elseif i >= (nof_pages-2) %}
+                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}">{{ i }}</a></li>
+                        {% else %}
+                            {% if renderedEllipses == 0 %}
+                                <li class="paginate_button"><a >...</a></li>
+                                {% set renderedEllipses = 1 %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    $('.json_pretty_print').each(function(){
+        var json_data_str = $(this).text();
+        var json_data = JSON.parse( json_data_str );
+        var str = JSON.stringify(json_data, null, 2);
+        $(this).html(syntaxHighlight(str));
+    });
+    function syntaxHighlight(json) {
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+</script>

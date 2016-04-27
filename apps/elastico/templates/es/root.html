@@ -1,0 +1,42 @@
+<section class="content-header">
+    <h5>
+        <a href="{{runtime_config.base_url}}"><strong>  Home</strong></a> / <strong>Indexes</strong>
+    </h5>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box ">
+                <div class="box-body">
+
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Index</th>
+                                <th>Types</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            {% for index in indexes %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{index.name}}</td>
+                                <td>
+                                    {% for type in index.types%}
+                                    [<a href="{{runtime_config.screen_href}}/{{index.name}}/{{type}}">{{type}}</a>]
+                                    {% endfor%}
+                                </td>
+                            </tr>
+                            {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

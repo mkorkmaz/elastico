@@ -1,0 +1,5 @@
+.DS_Store
+.idea
+lib/vendor
+lib/composer.lock
+apps/elastico/app_config.php
