@@ -1,4 +1,5 @@
 #Elastico
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mkorkmaz/elastico/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/elastico/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/mkorkmaz/elastico/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/elastico/build-status/master)
 
 Just another Elasticsearch Document Viewer.
 
