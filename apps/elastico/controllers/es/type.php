@@ -11,8 +11,8 @@ function app_content( $request, $args ){
     $params = [];
     $from   = $request->getParam( 'from', 0 );
     $sort   = $request->getParam( 'sort', '' );
-    $search = $request->getParam( 'search', '' );
-    $size = 25;
+    $query  = $request->getParam( 'query', '' );
+    $size   = 25;
 
     $documents = [];
 
@@ -22,12 +22,12 @@ function app_content( $request, $args ){
     $params['from']     = $from;
     $params['size']     = $size;
 
-    if (!empty($search)) {
-        $body = json_decode($search);
+    if (!empty($query)) {
+        $body = json_decode($query);
         if (json_last_error() == JSON_ERROR_NONE) {
             $params['body'] = $body;
         } else {
-            $params['q'] = $search;
+            $params['q'] = $query;
         }
     }
 
@@ -42,5 +42,5 @@ function app_content( $request, $args ){
     if( isset( $count['hits']['total'] ) ){
         $nof =  (int) $count['hits']['total'];
     }
-    return ['app_title'=>$index."/".$type ,'data'=>[ 'index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size,'sort'=>$sort, 'search'=>$search]];
+    return ['app_title'=>$index."/".$type ,'data'=>[ 'index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size,'sort'=>$sort, 'query'=>$query]];
 }
