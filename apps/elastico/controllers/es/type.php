@@ -5,23 +5,19 @@
 function app_content( $request, $args ){
 
     global $ES;
-
     $index  = $args['index'];
     $type   = $args['type'];
     $params = [];
-    $from   = $request->getParam( 'from', 0 );
-    $sort   = $request->getParam( 'sort', '' );
-    $query  = $request->getParam( 'query', '' );
+    $from   = $request->getParam('from', 0);
+    $sort   = $request->getParam('sort', '');
+    $query  = $request->getParam('query', '');
     $size   = 25;
-
     $documents = [];
-
-    $params['index']    = $index;
-    $params['type']     = $type;
-    $params['sort']     = $sort;
-    $params['from']     = $from;
-    $params['size']     = $size;
-
+    $params['index'] = $index;
+    $params['type'] = $type;
+    $params['sort'] = $sort;
+    $params['from'] = $from;
+    $params['size']  = $size;
     if (!empty($query)) {
         $body = json_decode($query);
         if (json_last_error() == JSON_ERROR_NONE) {
@@ -30,7 +26,6 @@ function app_content( $request, $args ){
             $params['q'] = $query;
         }
     }
-
     $results = $ES->search($params);
     foreach ($results['hits']['hits'] as $doc){
         $doc['_source']['_id'] = $doc['_id'];
