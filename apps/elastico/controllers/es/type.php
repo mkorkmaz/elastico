@@ -1,6 +1,6 @@
 <?php
 
-function app_content($request, $args){
+function app_content($request, $args) {
 
     global $ES;
     $index  = $args['index'];
@@ -16,24 +16,24 @@ function app_content($request, $args){
     $params['sort'] = $sort;
     $params['from'] = $from;
     $params['size'] = $size;
-    if (!empty($query)){
+    if (!empty($query)) {
         $body = json_decode($query);
-        if (json_last_error() == JSON_ERROR_NONE){
+        if (json_last_error() == JSON_ERROR_NONE) {
             $params['body'] = $body;
         } else {
             $params['q'] = $query;
         }
     }
     $results = $ES->search($params);
-    foreach($results['hits']['hits'] as $doc){
+    foreach ($results['hits']['hits'] as $doc) {
         $doc['_source']['_id'] = $doc['_id'];
         $documents[] = $doc['_source'];
     }
     $params['search_type'] = 'count';
     $count = $ES->search($params);
     $nof = 0;
-    if(isset($count['hits']['total'])){
-        $nof =  (int) $count['hits']['total'];
+    if (isset($count['hits']['total'])) {
+        $nof = (int) $count['hits']['total'];
     }
-    return ['app_title'=>$index."/".$type ,'data'=>['index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size,'sort'=>$sort, 'query'=>$query]];
+    return ['app_title'=>$index . "/" . $type ,'data'=>['index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size,'sort'=>$sort, 'query'=>$query]];
 }
