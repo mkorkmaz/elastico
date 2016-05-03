@@ -1,6 +1,6 @@
 <?php
 
-function app_content($request, $args){
+function app_content($request, $args) {
 
     global $ES;
 
@@ -9,9 +9,9 @@ function app_content($request, $args){
     $id     = $args['id'];
 
     $params = [];
-    $params['index']= $index;
+    $params['index'] = $index;
     $params['type'] = $type;
-    $params['id']   = $id;
+    $params['id'] = $id;
     $results = $ES->delete($params);
     
     sleep(1);
