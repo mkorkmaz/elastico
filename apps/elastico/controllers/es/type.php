@@ -9,8 +9,9 @@ function app_content( $request, $args ){
     $index  = $args['index'];
     $type   = $args['type'];
     $params = [];
-    $from = $request->getParam( 'from', 0 );
-    $sort = $request->getParam( 'sort', '' );
+    $from   = $request->getParam( 'from', 0 );
+    $sort   = $request->getParam( 'sort', '' );
+    $search = $request->getParam( 'search', '' );
     $size = 25;
 
     $documents = [];
@@ -20,6 +21,15 @@ function app_content( $request, $args ){
     $params['sort']     = $sort;
     $params['from']     = $from;
     $params['size']     = $size;
+
+    if (!empty($search)) {
+        $body = json_decode($search);
+        if (json_last_error() == JSON_ERROR_NONE) {
+            $params['body'] = $body;
+        } else {
+            $params['q'] = $search;
+        }
+    }
 
     $results = $ES->search($params);
     foreach ($results['hits']['hits'] as $doc){
@@ -32,5 +42,5 @@ function app_content( $request, $args ){
     if( isset( $count['hits']['total'] ) ){
         $nof =  (int) $count['hits']['total'];
     }
-    return ['app_title'=>$index."/".$type ,'data'=>[ 'index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size,'sort'=>$sort]];
+    return ['app_title'=>$index."/".$type ,'data'=>[ 'index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size,'sort'=>$sort, 'search'=>$search]];
 }
