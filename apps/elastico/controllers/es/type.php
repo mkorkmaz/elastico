@@ -35,5 +35,5 @@ function app_content($request, $args) {
     if (isset($count['hits']['total'])) {
         $nof = (int) $count['hits']['total'];
     }
-    return ['app_title'=>$index . "/" . $type ,'data'=>['index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size,'sort'=>$sort, 'query'=>$query]];
+    return ['app_title'=>$index . "/" . $type ,'data'=>['index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size, 'sort'=>$sort, 'query'=>$query]];
 }
