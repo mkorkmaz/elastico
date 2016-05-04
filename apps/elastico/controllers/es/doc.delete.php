@@ -13,7 +13,6 @@ function app_content($request, $args) {
     $params['type'] = $type;
     $params['id'] = $id;
     $results = $ES->delete($params);
-    
     sleep(1);
     header("location:" . BASE_HREF . "/" . $index . "/" . $type . "?res=success&req=delete");
     exit;
