@@ -24,12 +24,10 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "mkdir app",
-      "cp -r vendor/mkorkmaz/elastico/app/* app/",
-      "cp -r app/app_config.sample.php app/app_config.php"
+      "post-install.sh"
     ],
     "post-update-cmd": [
-      "cp -r vendor/mkorkmaz/elastico/app/* app"
+      "post-update.sh"
     ]
   }
 }
