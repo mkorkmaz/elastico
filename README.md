@@ -33,7 +33,7 @@ Open a web browser with the address: http://127.0.0.1:8080 and start using Elast
  can access it from anywhere, you have to make sure that nobody except you can access the address.
 
  At this point, I assume that you know how to configure a virtual host. Just make sure that virtual host's root path is
- path/to/**apps/elastico/webroot**.
+ path/to/**app/webroot**.
 
  After configuration of a virtual host and testing Elastico just to make sure it is working fine, you can set up
  basic auth for your web server. Here are the tutorials for Apache2 and Nginx:
