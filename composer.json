@@ -21,5 +21,8 @@
     "php": ">=5.5",
     "reformo/rslim": "*",
     "elasticsearch/elasticsearch": "~2.0"
-  }
+  },
+  "post-create-project-cmd": [
+    "php -r \"copy('app/app_config.sample.php', 'app/app_config.php');\""
+  ]
 }
