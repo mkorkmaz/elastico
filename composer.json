@@ -23,11 +23,11 @@
     "elasticsearch/elasticsearch": "~2.0"
   },
   "scripts": {
-    "post-install-cmd": [
-      "sh post-install.sh"
+    "post-package-install": [
+      "post-install.sh"
     ],
-    "post-update-cmd": [
-      "sh post-update.sh"
+    "post-package-update": [
+      "post-update.sh"
     ]
   }
 }
