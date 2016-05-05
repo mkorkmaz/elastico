@@ -22,12 +22,17 @@
     "reformo/rslim": "*",
     "elasticsearch/elasticsearch": "~2.0"
   },
+  "autoload": {
+    "psr-4": {
+      "Elastico\\": "src/"
+    }
+  },
   "scripts": {
-    "post-package-install": [
-      "./post-install.sh"
+    "post-install-cmd": [
+      "cp -r app ../../../app"
     ],
-    "post-package-update": [
-      "./post-update.sh"
+    "post-update-cmd": [
+      "cp -r app ../../../app"
     ]
   }
 }
