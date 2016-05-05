@@ -13,6 +13,8 @@ Just another Elasticsearch Document Viewer.
 mkdir elastico
 cd elastico
 $ composer require --prefer-dist mkorkmaz/elastico "1.*"
+cp -r vendor/mkorkmaz/elastico/app ./app
+cp app/app_config.sample.php app_config.php
 
 ```
 
