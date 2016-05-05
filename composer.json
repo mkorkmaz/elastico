@@ -24,10 +24,10 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "vendor/mkorkmaz/elastico/post-install.sh"
+      "post-install.sh"
     ],
     "post-update-cmd": [
-      "vendor/mkorkmaz/elastico/post-update.sh"
+      "post-update.sh"
     ]
   }
 }
