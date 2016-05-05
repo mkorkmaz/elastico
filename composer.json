@@ -24,10 +24,10 @@
   },
   "scripts": {
     "post-package-install": [
-      "post-install.sh"
+      "./post-install.sh"
     ],
     "post-package-update": [
-      "post-update.sh"
+      "./post-update.sh"
     ]
   }
 }
