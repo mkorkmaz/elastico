@@ -10,11 +10,10 @@ Just another Elasticsearch Document Viewer.
 ### Installation
 
 ```
-git clone https://github.com/mkorkmaz/elastico.git
-cd elastico/lib
-composer install
-cd ../apps/elastico
-cp app_config.sample.php app_config.php
+mkdir elastico
+cd elastico
+$ composer require --prefer-dist mkorkmaz/elastico "1.*"
+
 ```
 
 Default configuration assumes that Elastico will run on local machine.
@@ -22,8 +21,7 @@ Default configuration assumes that Elastico will run on local machine.
 
 ### Running on local machine
 ```
-cd webroot
-php -S 127.0.0.1:8080
+php -S 127.0.0.1:8080 -t app/webroot
 ```
 
 Open a web browser with the address: http://127.0.0.1:8080 and start using Elastico.

@@ -1,0 +1,36 @@
+{
+  "name": "mkorkmaz/elastico",
+  "type": "library",
+  "description": "Basically Slim but based on convention over configuration.",
+  "keywords": ["elasticsearch","Document Viewer"],
+  "homepage": "https://github.com/mkorkmaz/elastico",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mehmet Korkmaz",
+      "email": "mehmet@mkorkmaz.com",
+      "homepage": "https://mkorkmaz.com"
+    },
+    {
+      "name": "Haydar KULEKCI",
+      "email": "haydarkulekci@gmail.com",
+      "homepage": "https://kulekci.net"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "slim/slim": "^3.0",
+    "twig/twig": "~1.0",
+    "reformo/rslim": "*",
+    "elasticsearch/elasticsearch": "~2.0"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "cp -r ./vendor/mkorkmaz/elastico/app ./app",
+      "cp -r ./app/app_config.sample.php ./app/app_config.php"
+    ],
+    "post-update-cmd": [
+      "cp -r /vendor/mkorkmaz/elastico/app ./app"
+    ]
+  }
+}

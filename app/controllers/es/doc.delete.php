@@ -11,10 +11,9 @@ function app_content($request, $args) {
     $params['index'] = $index;
     $params['type'] = $type;
     $params['id'] = $id;
-    try{
+    try {
         $result = $ES->delete($params);
-    }
-    catch (Exception $e){
+    } catch (Exception $e) {
         /*
         If you try to delete a document with an _id that does not exist, $ES->delete throws an Exception.
         B/c of default behaviour of reformo/rslim, it bypasses all Exceptions and it returns Exception message.

@@ -1,6 +1,0 @@
-{
-    "require": {
-    	"elasticsearch/elasticsearch": "~2.0",
-        "reformo/rslim": "1.*"
-    }
-}
