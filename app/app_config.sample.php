@@ -1,7 +1,7 @@
 <?php
 
 $config = [
-    'base_dir'  => dirname(dirname(__DIR__)),
+    'base_dir'  => dirname(__DIR__),
     'base_url'  => 'http://127.0.0.1:8080',
     'app_name'  => 'Elastico',
     'app_dir'   => 'app',
