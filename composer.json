@@ -29,9 +29,11 @@
   },
   "scripts": {
     "post-install-cmd": [
+      "echo running post install commands",
       "cp -r app ../../../app"
     ],
     "post-update-cmd": [
+      "echo running post update commands",
       "cp -r app ../../../app"
     ]
   }
