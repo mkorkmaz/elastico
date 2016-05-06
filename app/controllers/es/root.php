@@ -1,6 +1,6 @@
 <?php
 
-function app_content($request, $args) {
+function es_root($request, $args) {
 
     global $ES;
 

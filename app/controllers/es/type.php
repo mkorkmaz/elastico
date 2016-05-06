@@ -1,6 +1,6 @@
 <?php
 
-function app_content($request, $args) {
+function es_type($request, $args) {
 
     global $ES;
     $index  = $args['index'];

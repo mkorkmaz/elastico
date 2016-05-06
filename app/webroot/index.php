@@ -19,5 +19,5 @@ $ES = \Elasticsearch\ClientBuilder::create()->setHosts([$config['es_server']])->
 $RSlim = new \RSlim\RSlim($config);
 $RSlim->register("get", '/', 'es/root');
 $RSlim->register("get", "/{index}/{type}", "es/type");
-$RSlim->register("get", "/delete/{index}/{type}/{id}", "es/doc.delete", 'json');
+$RSlim->register("get", "/delete/{index}/{type}/{id}", "es/doc_delete", 'json');
 $RSlim->run();
