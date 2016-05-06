@@ -18,6 +18,15 @@ cp app/app_config.sample.php app/app_config.php
 
 ```
 
+Alternatively you can
+
+```
+composer create-project mkorkmaz/elastico
+cd elastico
+cp app/app_config.sample.php app/app_config.php
+
+```
+
 Default configuration assumes that Elastico will run on local machine.
 
 
