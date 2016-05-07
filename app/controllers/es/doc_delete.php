@@ -1,12 +1,12 @@
 <?php
 
-function es_doc_delete($request, $args) {
-
+function es_doc_delete($request, $args)
+{
     global $ES;
 
-    $index  = $args['index'];
-    $type   = $args['type'];
-    $id     = $args['id'];
+    $index = $args['index'];
+    $type = $args['type'];
+    $id = $args['id'];
     $params = [];
     $params['index'] = $index;
     $params['type'] = $type;
@@ -23,6 +23,6 @@ function es_doc_delete($request, $args) {
     }
     $found = ($result['found'] === true) ? 1 : 0;
     sleep(1);
-    header("location:" . BASE_HREF . "/" . $index . "/" . $type . "?res=success&req=delete&f=".$found);
+    header('location:'.BASE_HREF.'/'.$index.'/'.$type.'?res=success&req=delete&f='.$found);
     exit;
 }

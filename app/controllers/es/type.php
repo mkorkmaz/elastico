@@ -1,15 +1,15 @@
 <?php
 
-function es_type($request, $args) {
-
+function es_type($request, $args)
+{
     global $ES;
-    $index  = $args['index'];
-    $type   = $args['type'];
+    $index = $args['index'];
+    $type = $args['type'];
     $params = [];
-    $from   = $request->getParam('from', 0);
-    $sort   = $request->getParam('sort', '');
-    $query  = $request->getParam('query', '');
-    $size   = 25;
+    $from = $request->getParam('from', 0);
+    $sort = $request->getParam('sort', '');
+    $query = $request->getParam('query', '');
+    $size = 25;
     $documents = [];
     $params['index'] = $index;
     $params['type'] = $type;
@@ -35,5 +35,6 @@ function es_type($request, $args) {
     if (isset($count['hits']['total'])) {
         $nof = (int) $count['hits']['total'];
     }
-    return ['app_title'=>$index . "/" . $type, 'data'=>['index' => $index, 'type' => $type, 'documents'=> $documents, 'from' => $from, 'nof'=>$nof, 'size' => $size, 'sort'=>$sort, 'query'=>$query]];
+
+    return ['app_title' => $index.'/'.$type, 'data' => ['index' => $index, 'type' => $type, 'documents' => $documents, 'from' => $from, 'nof' => $nof, 'size' => $size, 'sort' => $sort, 'query' => $query]];
 }
