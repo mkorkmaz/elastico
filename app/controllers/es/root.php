@@ -6,6 +6,7 @@ function es_root($request, $args)
 
     $indices = $ES->indices()->getAliases();
     $indexes = [];
+    $params = [];
     foreach ($indices as $index => $alieses) {
         if (strpos($index, '.') !== 0) {
             $params['index'] = $index;
