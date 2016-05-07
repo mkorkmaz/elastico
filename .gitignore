@@ -3,3 +3,6 @@
 lib/vendor
 lib/composer.lock
 apps/elastico/app_config.php
+.settings
+.project
+.buildpath

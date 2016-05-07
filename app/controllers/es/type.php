@@ -36,5 +36,5 @@ function es_type($request, $args)
         $nof = (int) $count['hits']['total'];
     }
 
-    return ['app_title' => $index.'/'.$type, 'data' => ['index' => $index, 'type' => $type, 'documents' => $documents, 'from' => $from, 'nof' => $nof, 'size' => $size, 'sort' => $sort, 'query' => $query]];
+    return ['app_title' => $index . '/' . $type, 'data' => ['index' => $index, 'type' => $type, 'documents' => $documents, 'from' => $from, 'nof' => $nof, 'size' => $size, 'sort' => $sort, 'query' => $query]];
 }
