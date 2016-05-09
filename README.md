@@ -1,5 +1,6 @@
 #Elastico
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mkorkmaz/elastico/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/elastico/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/mkorkmaz/elastico/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/elastico/build-status/master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4cf25ea4b644fddb0d5497fa65f58eb)](https://www.codacy.com/app/mehmet/elastico?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mkorkmaz/elastico&amp;utm_campaign=Badge_Grade)
 
 Just another Elasticsearch Document Viewer.
 

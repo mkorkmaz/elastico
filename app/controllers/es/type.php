@@ -2,7 +2,7 @@
 
 function es_type($request, $args)
 {
-    global $ES;
+    global $ESConn;
     $index = $args['index'];
     $type = $args['type'];
     $params = [];
@@ -17,20 +17,20 @@ function es_type($request, $args)
     $params['from'] = $from;
     $params['size'] = $size;
     if (!empty($query)) {
+        $params['q'] = $query;
         $body = json_decode($query);
         if (json_last_error() == JSON_ERROR_NONE) {
             $params['body'] = $body;
-        } else {
-            $params['q'] = $query;
+            unset($params['q']);
         }
     }
-    $results = $ES->search($params);
+    $results = $ESConn->search($params);
     foreach ($results['hits']['hits'] as $doc) {
         $doc['_source']['_id'] = $doc['_id'];
         $documents[] = $doc['_source'];
     }
     $params['search_type'] = 'count';
-    $count = $ES->search($params);
+    $count = $ESConn->search($params);
     $nof = 0;
     if (isset($count['hits']['total'])) {
         $nof = (int) $count['hits']['total'];

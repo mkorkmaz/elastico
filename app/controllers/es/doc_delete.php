@@ -2,7 +2,7 @@
 
 function es_doc_delete($request, $args)
 {
-    global $ES;
+    global $ESConn;
 
     $index = $args['index'];
     $type = $args['type'];
@@ -12,7 +12,7 @@ function es_doc_delete($request, $args)
     $params['type'] = $type;
     $params['id'] = $id;
     try {
-        $result = $ES->delete($params);
+        $result = $ESConn->delete($params);
     } catch (Exception $e) {
         /*
         If you try to delete a document with an _id that does not exist, $ES->delete throws an Exception.
@@ -23,6 +23,5 @@ function es_doc_delete($request, $args)
     }
     $found = ($result['found'] === true) ? 1 : 0;
     sleep(1);
-    header('location:' . BASE_HREF . '/' . $index . '/' . $type . '?res=success&req=delete&f=' . $found);
-    exit;
+    return ['redirect'=>BASE_HREF . '/' . $index . '/' . $type . '?res=success&req=delete&f=' . $found];
 }
