@@ -3,7 +3,6 @@
 function es_doc_delete($request, $args)
 {
     global $ESConn;
-
     $index = $args['index'];
     $type = $args['type'];
     $id = $args['id'];
@@ -21,7 +20,7 @@ function es_doc_delete($request, $args)
         */
         $result = json_decode($e->getMessage(), true);
     }
-    $found = ($result['found'] === true) ? 1 : 0;
+    $found = (int) $result['found'];
     sleep(1);
     return ['redirect'=>BASE_HREF . '/' . $index . '/' . $type . '?res=success&req=delete&f=' . $found];
 }
