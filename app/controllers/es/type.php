@@ -26,7 +26,7 @@ function es_type($request, $args)
     return ['app_title' => $index . '/' . $type, 'data' => ['index' => $index, 'type' => $type, 'documents' => $documents, 'from' => $from, 'nof' => $nof, 'size' => $size, 'sort' => $sort, 'query' => $query]];
 }
 
-function es_type_query($index, $type, $from, $size, $size, $sort, $query)
+function es_type_query($index, $type, $from, $size, $sort, $query)
 {
     $params = [];
 
