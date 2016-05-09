@@ -18,18 +18,13 @@ function es_type($request, $args)
     }
     $params['search_type'] = 'count';
     $count = $ESConn->search($params);
-    $nof = 0;
-    if (isset($count['hits']['total'])) {
-        $nof = (int) $count['hits']['total'];
-    }
-
+    $nof = (int) $count['hits']['total'];
     return ['app_title' => $index . '/' . $type, 'data' => ['index' => $index, 'type' => $type, 'documents' => $documents, 'from' => $from, 'nof' => $nof, 'size' => $size, 'sort' => $sort, 'query' => $query]];
 }
 
 function es_type_query($index, $type, $from, $size, $sort, $query)
 {
     $params = [];
-
     $params['index'] = $index;
     $params['type'] = $type;
     $params['sort'] = $sort;
