@@ -1,6 +1,5 @@
 languages:
-
   PHP: true
 exclude_paths:
-- app/webroot/assets/*
-- app/templates/*
+  - app/webroot/assets/*
+  - app/templates/*
