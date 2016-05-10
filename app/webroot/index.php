@@ -18,7 +18,7 @@ if (isset($_SESSION['ES_SERVER'])) {
     $config['es_server'] = $_SESSION['ES_SERVER'];
 }
 
-$ESConn = \Elasticsearch\ClientBuilder::create()->setHosts([$config['es_server']])->build();
+$esConn = \Elasticsearch\ClientBuilder::create()->setHosts([$config['es_server']])->build();
 
 $RSlim = new \RSlim\RSlim($config);
 $RSlim->register('get', '/', 'es/root');

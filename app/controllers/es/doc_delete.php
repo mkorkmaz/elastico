@@ -2,7 +2,7 @@
 
 function es_doc_delete($request, $args)
 {
-    global $ESConn;
+    global $esConn;
     
     $params = [
         'index'=>$args['index'],
@@ -10,7 +10,7 @@ function es_doc_delete($request, $args)
         'id'=>$args['id'],
     ];
     try {
-        $result = $ESConn->delete($params);
+        $result = $esConn->delete($params);
     } catch (Exception $e) {
         /*
         If you try to delete a document with an _id that does not exist, $ES->delete throws an Exception.

@@ -2,7 +2,7 @@
 
 function es_type($request, $args)
 {
-    global $ESConn;
+    global $esConn;
     $index = $args['index'];
     $type = $args['type'];
     $from = $request->getParam('from', 0);
@@ -11,13 +11,13 @@ function es_type($request, $args)
     $size = 25;
     $documents = [];
     $params = es_type_query($index, $type, $from, $size, $sort, $query);
-    $results = $ESConn->search($params);
+    $results = $esConn->search($params);
     foreach ($results['hits']['hits'] as $doc) {
         $doc['_source']['_id'] = $doc['_id'];
         $documents[] = $doc['_source'];
     }
     $params['search_type'] = 'count';
-    $count = $ESConn->search($params);
+    $count = $esConn->search($params);
     $nof = $count['hits']['total'];
     return ['app_title' => $index . '/' . $type, 'data' => ['index' => $index, 'type' => $type, 'documents' => $documents, 'from' => $from, 'nof' => $nof, 'size' => $size, 'sort' => $sort, 'query' => $query]];
 }

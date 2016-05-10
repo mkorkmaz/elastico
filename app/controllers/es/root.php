@@ -2,9 +2,9 @@
 
 function es_root($request, $args)
 {
-    global $ESConn;
+    global $esConn;
 
-    $indices = array_keys($ESConn->indices()->getAliases());
+    $indices = array_keys($esConn->indices()->getAliases());
     $indexes = [];
     $params = [];
     foreach ($indices as $index) {
@@ -12,7 +12,7 @@ function es_root($request, $args)
             $params['index'] = $index;
             $index_data = [];
             $index_data['name'] = $index;
-            $index_info = $ESConn->indices()->getMapping($params);
+            $index_info = $esConn->indices()->getMapping($params);
             $index_data['types'] = array_keys($index_info[$index]['mappings']);
             $indexes[] = $index_data;
         }
