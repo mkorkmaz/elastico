@@ -1,4 +1,5 @@
 #Elastico
+[![Latest Stable Version](https://poser.pugx.org/mkorkmaz/elastico/v/stable)](https://packagist.org/packages/mkorkmaz/elastico) [![Total Downloads](https://poser.pugx.org/mkorkmaz/elastico/downloads)](https://packagist.org/packages/mkorkmaz/elastico) [![Latest Unstable Version](https://poser.pugx.org/mkorkmaz/elastico/v/unstable)](https://packagist.org/packages/mkorkmaz/elastico) [![License](https://poser.pugx.org/mkorkmaz/elastico/license)](https://packagist.org/packages/mkorkmaz/elastico)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mkorkmaz/elastico/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/elastico/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/mkorkmaz/elastico/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mkorkmaz/elastico/build-status/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4cf25ea4b644fddb0d5497fa65f58eb)](https://www.codacy.com/app/mehmet/elastico?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mkorkmaz/elastico&amp;utm_campaign=Badge_Grade)
 

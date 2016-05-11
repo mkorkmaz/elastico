@@ -36,7 +36,7 @@
                             {% set doc_order = loop.index %}
                             <tr>
                                 <td>{{doc_order+from}}</td>
-                                <td> <a href="{{runtime_config.screen_href}}/delete/{{index}}/{{type}}/{{doc._id}}" onclick="return confirm('Are you sure to delete this document?')"><i class="fa fa-times"></i></a></td>
+                                <td> <a href="{{runtime_config.screen_href}}/delete/{{index}}/{{type}}/{{doc._id}}?sort={{sort}}&from={{from}}&query={{query}}" onclick="return confirm('Are you sure to delete this document?')"><i class="fa fa-times"></i></a></td>
                                 <td  onclick="$('#json_data_{{doc_order}}').slideToggle('slow')" style="cursor: default;">
                                     {% for key,value in doc%}
                                         {%if key!='type'%}
@@ -77,12 +77,12 @@
                 <ul class="pagination">
                     {% for i in 1..nof_pages %}
                         {% if i < 4 %}
-                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}">{{ i }}</a></li>
+                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}&query={{query}}">{{ i }}</a></li>
                         {% elseif i>=(curr_page-1) and i<=(curr_page+1) %}
                             {% set renderedEllipses = 0 %}
-                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}">{{ i }}</a></li>
+                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}&query={{query}}">{{ i }}</a></li>
                         {% elseif i >= (nof_pages-2) %}
-                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}">{{ i }}</a></li>
+                            <li class="paginate_button {%if (i)==curr_page%}active{% endif %}"> <a href="{{runtime_config.screen_href}}/{{index}}/{{type}}?sort={{sort}}&from={{( i-1 )*size}}&query={{query}}">{{ i }}</a></li>
                         {% else %}
                             {% if renderedEllipses == 0 %}
                                 <li class="paginate_button"><a >...</a></li>

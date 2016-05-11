@@ -3,7 +3,9 @@
 function es_doc_delete($request, $args)
 {
     global $esConn;
-    
+    $from = $request->getParam('from', 0);
+    $sort = $request->getParam('sort', '');
+    $query = $request->getParam('query', '');
     $params = [
         'index'=>$args['index'],
         'type'=>$args['type'],
@@ -21,5 +23,7 @@ function es_doc_delete($request, $args)
     }
     $found = (int) $result['found'];
     sleep(1);
-    return ['redirect'=>BASE_HREF . '/' . $args['index'] . '/' . $args['type'] . '?res=success&req=delete&f=' . $found];
+    return ['redirect'=>BASE_HREF . '/' . $args['index'] . '/' . $args['type']
+        . '?from=' . $from . "&sort=" . $sort . "&query=" . $query
+        . '&res=success&req=delete&f=' . $found];
 }
