@@ -16,7 +16,6 @@ function es_type($request, $args)
         $doc['_source']['_id'] = $doc['_id'];
         $documents[] = $doc['_source'];
     }
-    $params['search_type'] = 'count';
     $count = $esConn->search($params);
     $nof = $count['hits']['total'];
     return ['app_title' => $index . '/' . $type, 'data' => ['index' => $index, 'type' => $type, 'documents' => $documents, 'from' => $from, 'nof' => $nof, 'size' => $size, 'sort' => $sort, 'query' => $query]];
